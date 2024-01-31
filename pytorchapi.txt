@@ -1,0 +1,13 @@
+import torch
+import torch.nn.functional as F
+torch.manual_seed(5)
+input_tensor=torch.randn(10,4)   #batchsize,input features
+weight_tensor=torch.randn(2,4)   #output features,input features
+bias_tensor=torch.randn(2)       #output features
+
+#calling api
+output_tensor=F.linear(input_tensor,weight_tensor,bias_tensor)
+print(output_tensor, output_tensor.shape)
+#doing by calculation
+output_tensor=torch.matmul(input_tensor,weight_tensor.t()) + bias_tensor
+print(output_tensor)
